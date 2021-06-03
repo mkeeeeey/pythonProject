@@ -68,6 +68,9 @@ def stopSock():
 
 
 def closeSock():
+    global client_socket
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.settimeout(var_dic['delay time']/1000)
     try:
         # client_socket.shutdown(socket.SHUT_RDWR)
         client_socket.close()
