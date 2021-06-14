@@ -16,6 +16,7 @@ def connServer(self):
     PORT = var_dic['tcp']['port']
     global client_socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.settimeout(3)
     try:
         client_socket.connect((HOST,PORT))
         print('Client connect server')
