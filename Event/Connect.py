@@ -4,7 +4,7 @@ from Util.TCPclient import connServer, closeSock
 
 
 def Conn(self):
-    closeSock()
+    # closeSock()
     ser_close()
     if self.tcpBtn.isChecked():
         var_dic['type'] = 'tcp'

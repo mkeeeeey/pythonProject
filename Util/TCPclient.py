@@ -9,6 +9,9 @@ from Util.Log import Logger
 # 소켓생성
 # client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+global check
+check = False
+
 
 def connServer(self):
     global HOST, PORT
@@ -17,18 +20,28 @@ def connServer(self):
     global client_socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.settimeout(3)
+    global check
+    if check:
+        client_socket.close()
+        check = False
     try:
         client_socket.connect((HOST,PORT))
         print('Client connect server')
+        check = True
         QMessageBox.information(self, 'Message', '연결되었습니다\n')
         self.singleFrame.setEnabled(True)
         self.LoopFrame.setEnabled(True)
     except OSError as ose:
         print(ose)
         QMessageBox.information(self, 'Error', '연결할 수 없습니다.\n'+str(ose))
+        self.singleFrame.setEnabled(False)
+        self.LoopFrame.setEnabled(False)
     except Exception as e:
         print(e)
         QMessageBox.information(self, 'Error', '연결할 수 없습니다.\n' + str(e))
+        self.singleFrame.setEnabled(False)
+        self.LoopFrame.setEnabled(False)
+
 
 
 def send_msg(self, msg):
@@ -69,12 +82,13 @@ def stopSock():
 
 
 def closeSock():
-    global client_socket
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.settimeout(var_dic['delay time']/1000)
-    try:
-        # client_socket.shutdown(socket.SHUT_RDWR)
-        client_socket.close()
-    except socket.error as err:
-        print(err)
-        pass
+    global check
+    check = False
+#     global client_socket
+#     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     try:
+#         # client_socket.shutdown(socket.SHUT_RDWR)
+#         client_socket.close()
+#     except socket.error as err:
+#         print(err)
+#         pass

@@ -1,2 +1,2 @@
-2021-06-03 Thursday 08:57:41
-{'type': 'rtu', 'ser': {'com port': 'COM1', 'baud rate': 9600, 'parity': 'NONE', 'stop bits': 1, 'data bits': 7}, 'tcp': {'ip': '192.168.1.46', 'port': 502}, 'delay time': 500}
+2021-06-17 Thursday 14:13:21
+{'type': 'rtu', 'ser': {'com port': 'COM4', 'baud rate': 9600, 'parity': 'NONE', 'stop bits': 1, 'data bits': 8}, 'tcp': {'ip': '192.168.1.46', 'port': 502}, 'delay time': 500}

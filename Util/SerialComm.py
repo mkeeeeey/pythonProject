@@ -44,6 +44,8 @@ def ser_open(self):
     except Exception as ex:
         print('COM PORT OPEN ERROR:', ex)
         QMessageBox.warning(self, 'Message', '연결할 수 없습니다\n')
+        self.singleFrame.setEnabled(False)
+        self.LoopFrame.setEnabled(False)
 
 
 def send_serial(data):
